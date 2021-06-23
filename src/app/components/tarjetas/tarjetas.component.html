@@ -1,0 +1,18 @@
+<div class="card-columns">
+
+
+  <!--(103) Queremos utilizar tarjetas componente tanto en la busqueda como en el home-->
+    <div (click)="verArtista(item)" *ngFor="let item of items" class="card" class="card puntero">
+      <img [src]="item.images | sinimagen" class="card-img-top" >
+      <div class="card-body">
+        <h5 class="card-title"> {{ item.name }} </h5>
+        <p class="card-text">
+          <span *ngFor="let artista of item.artists"
+                class="badge badge-pill badge-primary">
+                {{ artista.name }}
+          </span><br>
+          Fecha lanzamiento:  {{item.release_date | date}}
+        </p>
+
+      </div>
+    </div>

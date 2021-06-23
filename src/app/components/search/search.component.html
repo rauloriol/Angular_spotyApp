@@ -1,0 +1,30 @@
+<div class="row mt-5">
+  <div class="col">
+
+    <!--(99) 2.03 min ponermos el #busquedaBarra para guardar lo que escribimos en la barra de busqueda (keypup) lo que se escribe por teclado-->
+    <input #busquedaBarra type="text"(keyup)="buscar(busquedaBarra.value)"  class="form-control" placeholder="Busqueda artista">
+
+  </div>
+</div>
+
+
+<div class="card-columns m-5" >
+
+  <!--(99) 8.15 min para hacer ngfor y importar las artista siguiendo la ruta y poner [src]-->
+  <!--(99) hago otro ngfor para recorrer otro [array] dentro de cantante que es cantante.genres para que me saque los generos-->
+  <!--(102) cambiamos con  un pipe cuando no hay imagenes que mostras que muestra una determinada y pasamos el pipe sinimmaen-->
+    <div *ngFor="let cantante of artistas" class="card">
+      <img [src]="cantante.images | sinimagen" class="card-img-top" >
+      <div class="card-body">
+        <h5 class="card-title"> {{ cantante.name }} </h5>
+        <span *ngFor="let genero of cantante.genres" class="badge badge-pill badge-info">
+          {{genero}}
+        </span>
+
+
+      </div>
+    </div>
+
+    <!--SE podria hacer lo mismo que en home con este codigo pero prefiero el antigulo y asi lo comento -->
+     <!--<app-tarjetas [items]= "artistas"></app-tarjetas>
+    -->

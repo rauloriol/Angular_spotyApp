@@ -1,0 +1,70 @@
+
+<div class="row mb-5">
+  <div class="col-2" >
+    <img [src]="artista.images | sinimagen"
+          class="img-thumbnail img-circle"> <!--(106) min 6.38 clases personalizadas para velo en forma redonda-->
+
+  </div>
+
+
+  <div class="col" >
+  <h3>{{artista.name}}</h3>
+  <h5>Generos</h5>
+  <span class="badge badge-primary">{{artista.genres[0]}}</span>
+  <span class="badge badge-primary">{{artista.genres[1]}}</span>
+
+
+  <p>
+    <a [href]="artista.external_urls.spotify" target="_blank">   <!--(106) min 7.34 para que no me salga de la pagina (blank)-->
+      Ir a la pagina del artista
+    </a>
+  </p>
+  </div>
+
+  <div class="col text-xl-left" >
+
+    <button class="btn btn-outline-danger" routerLink="home">  <!--(106) min 8.32 para volver a la pagina home-->
+      Volver
+    </button>
+
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+
+    <table class="table">
+      <!--Encabezado de la tabla-->
+      <thead>
+        <tr class="tablaCabeza">
+          <th>Foto</th>
+          <th>Album</th>
+          <th>Cancion</th>
+          <th>Vista previa</th>
+        </tr>
+
+      </thead>
+      <!--Cuerpo de la tabla de la tabla-->
+      <!--Cuando es una imagen hay que poner [src] (107) 8.25 min-->
+      <!-- <img [src]="cancion.album.images[2].url">  Podria ser esta pero gastamos la otra que tiene el pipe por si una cancion no tiene imagen por defecto-->
+      <!--Cuando es un audio hay que poner [src] (107) 9.52 min y ponemos control para poder tener los controles-->
+      <tbody>
+        <tr *ngFor="let cancion of topCanciones">
+          <td>
+            <img [src]="cancion.album.images | sinimagen " class="img-thumb">
+          </td>
+          <td>{{cancion.album.name}}</td>
+          <td>{{cancion.name}}</td>
+          <td>
+            <audio [src]="cancion.preview_url" controls></audio>
+          </td>
+        </tr>
+      </tbody>
+
+    </table>
+
+
+
+
+  </div>
+</div>
